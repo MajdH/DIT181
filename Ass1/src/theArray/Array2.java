@@ -18,7 +18,7 @@ class Array2 {
 	  public int size() {
 	    return size;
 	  }
-
+	  
 	  // Set the i-th element to x
 	  // We are not checking whether the index is
 	  // in bounds, because dereferencing the array
@@ -36,10 +36,10 @@ class Array2 {
 
 	  // Reverse the array
 	  public void reverse() {
-		  for(int i = 0; i < arr.length / 2; i++) {
+		  for(int i = 0; i < size / 2; i++) {
 			  int temp = arr[i];
-			  arr[i] = arr[arr.length - i - 1];
-			  arr[arr.length - i - 1] = temp;
+			  arr[i] = arr[size - i-1];
+			  arr[size - i - 1] = temp;
 		  }
 	  }
 	  // O(log n)
@@ -48,13 +48,11 @@ class Array2 {
 	  // if there are no odd numbers.
 	  public int maxOdd() {
 		  int max = 0;
-		  for( int i = 0; i < arr.length; i++) {
-			 if(arr[i] % 2 == 0) {
-				 i++;
-			 }else {
+		  for( int i = 0; i < size-1; i++) {
+			 if(arr[i] % 2 != 0) {
 				 if(arr[i] > max) {
 					 max = arr[i];
-				 }
+				 } 
 			 }
 		  }
 	    return max;
@@ -78,21 +76,24 @@ class Array2 {
 	  // This method may change the order of the other
 	  // elements of the array.
 	  public void removeFast(int i) {
+		  arr[i]= arr[size-1];
+			 arr[size-1]=0;
+			 // complexity of O(1)
 	  }
 
 	  // Return the index of the first occurrence of x in the array,
 	  // or -1 if x does not occur.
 	  public int find(int x) {
 		  int occu = -1;
-		  while(occu > -1) {
-			  for(int i = 0; i < arr.length; i++) {
+			  for(int i = 0; i < size; i++) {
 				  if(arr[i] == x) {
 					  occu = i;
+					  break;
 				  }
 			  }
-		  }
 	    return occu;
 	  }
+//	   complexity of O(n)
 
 	  // Find the length of the longest palindrome that is
 	  // a contiguous subsequence of the array. A palindrome
@@ -164,25 +165,25 @@ public static void main (String[] args) {
 	test.set(3, 4);
 	test.set(4, 5);
 	test.set(5, 3);
-	test.set(6, 5);
-	test.set(7, 4);
-	test.set(8, 0);
-	test.set(9, 9);
+	test.set(6, 3);
+	test.set(7, 5);
+	test.set(8, 4);
+	test.set(9, 2);
 	test.set(10, 4);
-	test.set(11, 5);
+	test.set(11, 2);
 	test.set(12, 3);
 	test.set(13, 3);
 	test.set(14, 5);
-	test.set(15, 4);
+	test.set(15, 21);
 	test.set(16, 5);
-	test.set(17, 3);
+	test.set(17, 21);
 	test.set(18, 5);
-	test.set(19, 4);
-	int maxPalindrome = test.maxPalindrome();
-	System.out.println("the length of the longest Palindrome is " + maxPalindrome);
-	for(int i = 0; i<test.size(); i++) {
-		System.out.println(test.get(i));
-	}
-	  System.out.println("finish");
+	test.set(19, 3);
+//	test.removeFast(0);
+	System.out.println("the length of the longest Palindrome is " + test.maxPalindrome());
+//	for(int i = 0; i<test.size(); i++) {
+//		System.out.println(test.get(i));
+//	}
+//	  System.out.println(test.find(9));
   }
 }
