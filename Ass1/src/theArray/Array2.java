@@ -1,9 +1,7 @@
 package theArray;
 import java.lang.reflect.Array;
+
 import java.util.Arrays;
-
-import assignment1.Array2;
-
 
 class Array2 {
 	  private final int max_elements = 200;
