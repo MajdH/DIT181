@@ -99,7 +99,31 @@ class Array2 {
 	  // is a word of the form ABCBA (length 5) or ABCCBA
 	  // (length 6).
 	  public int maxPalindrome() {
-	    return 0;
+		  int length=0;
+		  for (int i =0; i<size-1; i++) {
+			  int tmp = 0;
+			  int low = i-1;
+			  int high = i;
+			  while (low>=0 && high<size && arr[low]==arr[high]){
+				  tmp = high - low +1;
+				  if (tmp>length) {
+					  length = tmp;
+				  }
+				  low--;
+				  high++;
+			  }
+			  
+			  high = i+1;
+			  while (low>=0 && high < size && arr[low]==arr[high]) {
+				  tmp = high - low +1;
+				  if (tmp>length) {
+					  length = tmp;
+				  }
+				  low--;
+				  high++;
+			  }		
+		  }
+		  return length;
 	  }
 
 	  // Return the maximum sum of all contiguous subarrays of the array.
