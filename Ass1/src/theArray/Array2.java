@@ -2,6 +2,8 @@ package theArray;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import assignment1.Array2;
+
 
 class Array2 {
 	  private final int max_elements = 200;
@@ -156,9 +158,33 @@ class Array2 {
 		  }
 	
 public static void main (String[] args) {
-    Array2 a = new Array2(3);
-    a.set(0, 4);
-    a.set(1, 2);
-    System.out.println(a.toString());
+	System.out.println("start");
+	Array2 test = new Array2(20);
+	test.set(0, 1);
+	test.set(1, 2);
+	test.set(2, 2);
+	test.set(3, 4);
+	test.set(4, 5);
+	test.set(5, 3);
+	test.set(6, 5);
+	test.set(7, 4);
+	test.set(8, 0);
+	test.set(9, 9);
+	test.set(10, 4);
+	test.set(11, 5);
+	test.set(12, 3);
+	test.set(13, 3);
+	test.set(14, 5);
+	test.set(15, 4);
+	test.set(16, 5);
+	test.set(17, 3);
+	test.set(18, 5);
+	test.set(19, 4);
+	int maxPalindrome = test.maxPalindrome();
+	System.out.println("the length of the longest Palindrome is " + maxPalindrome);
+	for(int i = 0; i<test.size(); i++) {
+		System.out.println(test.get(i));
+	}
+	  System.out.println("finish");
   }
 }
