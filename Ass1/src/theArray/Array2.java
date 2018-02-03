@@ -36,10 +36,10 @@ class Array2 {
 
 	  // Reverse the array
 	  public void reverse() {
-		  for(int i = 0; i < arr.length / 2; i++) {
+		  for(int i = 0; i <= arr.length / 2; i++) {
 			  int temp = arr[i];
-			  arr[i] = arr[arr.length - i - 1];
-			  arr[arr.length - i - 1] = temp;
+			  arr[i] = arr[arr.length - i -1];
+			  arr[arr.length - i] = temp;
 		  }
 	  }
 	  // O(log n)
@@ -104,13 +104,44 @@ class Array2 {
 
 	  // Return the maximum sum of all contiguous subarrays of the array.
 	  public int maxInterval() {
-	    return 0;
+		  int soFar =0;
+		  int maxEnding = 0;
+		  for( int i = 0; i < arr[size -1]; i++) {
+			  maxEnding = maxEnding + arr[i];
+			  if(maxEnding < 0) { maxEnding = 0;}
+			  if (soFar < maxEnding) { soFar = maxEnding;}
+			  return soFar;
+		
 	  }
 
 	  // Return the index of the lowest element of the array,
 	  // assuming that the array contains a cyclic shift of
 	  // a non-decreasing sequence.
 	  public int findSplice() {
+		  int low = arr[0];
+		  int high = arr[size - 1];
+		  if(low > high || low == high) { return arr[0];}
+		  int mid = low + (high - low) / 2;
+		  
+	        // Find mid
+	        int mid = low + (high - low)/2; /*(low + high)/2;*/
+	 
+	        // Check if element (mid+1) is minimum element. Consider
+	        // the cases like {3, 4, 5, 1, 2}
+	        if (mid < high && arr[mid+1] < arr[mid])
+	            return arr[mid+1];
+	 
+	        // Check if mid itself is minimum element
+	        if (mid > low && arr[mid] < arr[mid - 1])
+	            return arr[mid];
+	 
+	        // Decide whether we need to go to left half or right half
+	        if (arr[high] > arr[mid])
+	            return findMin(arr, low, mid-1);
+	        return findMin(arr, mid+1, high);
+	    }
+
+		  
 	    return 0;
 	  }
 
@@ -136,5 +167,6 @@ public static void main (String[] args) {
     a.set(0, 4);
     a.set(1, 2);
     System.out.println(a.toString());
+    System.out.println(a.size);
   }
 }
