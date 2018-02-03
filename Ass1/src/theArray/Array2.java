@@ -129,6 +129,7 @@ class Array2 {
 
 	  // Return the maximum sum of all contiguous subarrays of the array.
 	  public int maxInterval() {
+		  
 	    return 0;
 	  }
 
@@ -136,7 +137,15 @@ class Array2 {
 	  // assuming that the array contains a cyclic shift of
 	  // a non-decreasing sequence.
 	  public int findSplice() {
-	    return 0;
+		  int lowest = arr[0];
+		  int index = 0;
+		  for (int i =0; i<size; i++) {
+			  if (arr[i]<lowest) {
+				  lowest = arr[i];
+				  index=i;
+			  }
+		  }
+	    return index;
 	  }
 
 	  // Return the median value of an array.
