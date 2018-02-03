@@ -111,6 +111,7 @@ class Array2 {
 	  // assuming that the array contains a cyclic shift of
 	  // a non-decreasing sequence.
 	  public int findSplice() {
+		  
 	    return 0;
 	  }
 
@@ -136,5 +137,6 @@ public static void main (String[] args) {
     a.set(0, 4);
     a.set(1, 2);
     System.out.println(a.toString());
+    System.out.println(a.size);
   }
 }
